@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import { getCategories, getProducts } from "../lib/api";
 import PriceTicker from "../components/PriceTicker";
 import Footer from "../components/Footer";
+import Providers from "../components/Providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,9 +38,11 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-green-50/40">
+        <Providers />
         <Navbar categories={categories} />
         <PriceTicker products={products} />
         <main className="flex-1">{children}</main>
+
         <Footer />
       </body>
     </html>
