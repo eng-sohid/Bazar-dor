@@ -25,8 +25,8 @@ export default function Hero() {
         <Image
           src="/bazar-hero.png"
           alt="বাজারের ঝুড়ি"
-          width={200}
-          height={160}
+          width={300}
+          height={200}
           className="h-auto w-48"
           priority
         />
