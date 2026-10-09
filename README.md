@@ -26,28 +26,3 @@
 | MongoDB Atlas             | ইউজার ডেটাবেস        |
 | react-hot-toast           | toast notification   |
 | Vercel                    | deployment           |
-
-## 🚀 Run locally
-
-```bash
-git clone https://github.com/eng-sohid/Bazar-dor.git
-cd Bazar-dor
-npm install
-cp .env.example .env.local   # মানগুলো বসান
-npm run dev
-```
-
-## 🔐 Environment variables
-
-`.env.example` দেখুন:
-
-```env
-MONGODB_URL=
-BETTER_AUTH_SECRET=
-BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
-
-## 📡 API
-
-ডেটা আসে `https://api.api-store.workers.dev/api/bazardor` থেকে (fallback: `api.abcz.workers.dev`)।
