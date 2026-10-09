@@ -15,18 +15,18 @@ export default function SocialLoginButtons() {
   return (
     <div className="mt-4">
       <div className="divider text-xs">অথবা</div>
-      <div className="space-y-2">
+      <div className="grid grid-cols-2 gap-2">
         <button
           type="button"
           onClick={() => login("google")}
-          className="btn btn-outline w-full"
+          className="btn btn-outline btn-sm sm:btn-md"
         >
           Google দিয়ে চালিয়ে যান
         </button>
         <button
           type="button"
           onClick={() => login("github")}
-          className="btn btn-outline w-full"
+          className="btn btn-outline btn-sm sm:btn-md"
         >
           GitHub দিয়ে চালিয়ে যান
         </button>

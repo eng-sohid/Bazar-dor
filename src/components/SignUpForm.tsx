@@ -17,13 +17,18 @@ export default function SignUpForm() {
     const name = String(form.get("name") ?? "").trim();
     const email = String(form.get("email") ?? "").trim();
     const password = String(form.get("password") ?? "");
+    const confirm = String(form.get("confirm") ?? "");
 
-    if (!name || !email || !password) {
+    if (!name || !email || !password || !confirm) {
       toast.error("সব ঘর পূরণ করুন");
       return;
     }
     if (password.length < 8) {
       toast.error("পাসওয়ার্ড কমপক্ষে ৮ অক্ষরের হতে হবে");
+      return;
+    }
+    if (password !== confirm) {
+      toast.error("দুটি পাসওয়ার্ড মিলছে না");
       return;
     }
 
@@ -42,50 +47,77 @@ export default function SignUpForm() {
 
   return (
     <div className="mx-auto max-w-md px-4 py-10">
-      <div className="rounded-2xl border border-green-100 bg-white p-6 shadow-sm">
-        <h1 className="text-2xl font-bold">সাইন আপ</h1>
+      <div className="text-center">
+        <h1 className="text-2xl font-bold">অ্যাকাউন্ট তৈরি করুন</h1>
         <p className="mt-1 text-sm text-base-content/60">
-          নতুন অ্যাকাউন্ট খুলুন
+          বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন
         </p>
+      </div>
 
-        <form onSubmit={handleSubmit} className="mt-5 space-y-3">
-          <input
-            name="name"
-            type="text"
-            placeholder="নাম"
-            className="input input-bordered w-full"
-          />
-          <input
-            name="email"
-            type="email"
-            placeholder="ইমেইল"
-            className="input input-bordered w-full"
-          />
-          <input
-            name="password"
-            type="password"
-            placeholder="পাসওয়ার্ড (কমপক্ষে ৮ অক্ষর)"
-            className="input input-bordered w-full"
-          />
+      <div className="mt-6 rounded-2xl border border-green-100 bg-white p-6 shadow-sm">
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <label className="block text-sm font-medium">
+            নাম
+            <input
+              name="name"
+              type="text"
+              placeholder="যেমন: রহিম উদ্দিন"
+              className="input input-bordered mt-1 w-full"
+            />
+          </label>
+          <label className="block text-sm font-medium">
+            ইমেইল
+            <input
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              className="input input-bordered mt-1 w-full"
+            />
+          </label>
+          <label className="block text-sm font-medium">
+            পাসওয়ার্ড
+            <input
+              name="password"
+              type="password"
+              placeholder="কমপক্ষে ৮ অক্ষর"
+              className="input input-bordered mt-1 w-full"
+            />
+          </label>
+          <label className="block text-sm font-medium">
+            পাসওয়ার্ড নিশ্চিত করুন
+            <input
+              name="confirm"
+              type="password"
+              placeholder="আবার লিখুন"
+              className="input input-bordered mt-1 w-full"
+            />
+          </label>
           <button
             disabled={loading}
-            className="btn btn-success w-full text-white"
+            className="btn w-full border-green-700 bg-green-700 text-white hover:bg-green-800"
           >
-            {loading ? "অপেক্ষা করুন..." : "রেজিস্টার করুন"}
+            {loading ? "অপেক্ষা করুন..." : "অ্যাকাউন্ট তৈরি করুন"}
           </button>
         </form>
+
         <SocialLoginButtons />
 
         <p className="mt-4 text-center text-sm">
-          আগে থেকেই অ্যাকাউন্ট আছে?{" "}
+          অ্যাকাউন্ট আছে?{" "}
           <Link
             href="/signin"
             className="font-semibold text-green-700 hover:underline"
           >
-            সাইন ইন
+            সাইন ইন করুন
           </Link>
         </p>
       </div>
+
+      <p className="mt-4 text-center text-sm">
+        <Link href="/" className="text-base-content/60 hover:text-green-700">
+          ← হোম পেজে ফিরে যান
+        </Link>
+      </p>
     </div>
   );
 }
