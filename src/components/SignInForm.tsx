@@ -22,18 +22,20 @@ export default function SignInForm() {
       toast.error("ইমেইল ও পাসওয়ার্ড দিন");
       return;
     }
-
     setLoading(true);
     const { error } = await authClient.signIn.email({ email, password });
-    setLoading(false);
 
     if (error) {
+      setLoading(false);
       toast.error(error.message || "ইমেইল বা পাসওয়ার্ড ভুল");
       return;
     }
-    toast.success("সাইন ইন সফল হয়েছে");
-    router.push(params.get("redirect") || "/");
-    router.refresh();
+
+    toast.success("সাইন ইন সফল হয়েছে", { duration: 2500 });
+    setTimeout(() => {
+      router.push(params.get("redirect") || "/");
+      router.refresh();
+    }, 900);
   }
 
   return (

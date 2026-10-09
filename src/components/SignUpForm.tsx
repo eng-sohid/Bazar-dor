@@ -29,14 +29,15 @@ export default function SignUpForm() {
 
     setLoading(true);
     const { error } = await authClient.signUp.email({ name, email, password });
-    setLoading(false);
 
     if (error) {
+      setLoading(false);
       toast.error(error.message || "রেজিস্ট্রেশন ব্যর্থ হয়েছে");
       return;
     }
-    toast.success("রেজিস্ট্রেশন সফল! এখন সাইন ইন করুন");
-    router.push("/signin");
+
+    toast.success("রেজিস্ট্রেশন সফল! এখন সাইন ইন করুন", { duration: 2500 });
+    setTimeout(() => router.push("/signin"), 900);
   }
 
   return (
