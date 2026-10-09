@@ -35,7 +35,7 @@ export default function Marquee({ products }: { products: Product[] }) {
 
       <div
         className="flex w-max"
-        style={{ animation: "marquee-scroll 30s linear infinite" }}
+        style={{ animation: "marquee-scroll 35s linear infinite" }}
       >
         {[0, 1].map((n) => (
           <div key={n} className="flex shrink-0" aria-hidden={n === 1}>
