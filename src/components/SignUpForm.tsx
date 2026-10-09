@@ -93,7 +93,7 @@ export default function SignUpForm() {
                 name="name"
                 type="text"
                 autoComplete="name"
-                placeholder="যেমন: রহিম উদ্দিন"
+                placeholder="Your Name"
                 className={inputClass}
                 disabled={loading}
               />
@@ -107,7 +107,7 @@ export default function SignUpForm() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="you@example.com"
+                placeholder="Your Email"
                 className={inputClass}
                 disabled={loading}
               />

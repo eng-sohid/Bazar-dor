@@ -89,7 +89,7 @@ export default function SignInForm() {
                 name="email"
                 type="email"
                 autoComplete="email"
-                placeholder="you@example.com"
+                placeholder="Your Email"
                 className={inputClass}
                 disabled={loading}
               />
