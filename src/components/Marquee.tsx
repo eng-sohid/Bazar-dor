@@ -23,11 +23,20 @@ function TickerItem({ product }: { product: Product }) {
   );
 }
 
-export default function PriceTicker({ products }: { products: Product[] }) {
+export default function Marquee({ products }: { products: Product[] }) {
   return (
     <div className="overflow-hidden border-b border-base-300 bg-base-200 py-2">
-      <div className="ticker-track">
-        {/* দুইবার রেন্ডার করা হয়েছে, যাতে লুপ মসৃণ হয় */}
+      <style>{`
+        @keyframes marquee-scroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+      `}</style>
+
+      <div
+        className="flex w-max"
+        style={{ animation: "marquee-scroll 60s linear infinite" }}
+      >
         {[0, 1].map((n) => (
           <div key={n} className="flex shrink-0" aria-hidden={n === 1}>
             {products.map((p) => (

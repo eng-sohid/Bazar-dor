@@ -1,29 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
-.ticker-track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 60s linear infinite;
+@plugin "daisyui" {
+  themes: light --default;
 }
 
-.ticker-track:hover {
-  animation-play-state: paused;
-}
-
-@keyframes ticker-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .ticker-track {
-    animation: none;
-  }
-}
 html {
   scroll-behavior: smooth;
 }

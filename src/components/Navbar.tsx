@@ -21,7 +21,6 @@ export default function Navbar({ categories }: { categories: Category[] }) {
 
   return (
     <header className="border-b border-base-300 bg-base-100">
-      {/* উপরের সারি: লোগো + auth */}
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link href="/" className="flex items-center gap-2">
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-600 text-lg text-white">
@@ -74,7 +73,6 @@ export default function Navbar({ categories }: { categories: Category[] }) {
         </div>
       </div>
 
-      {/* নিচের সারি: ক্যাটাগরি */}
       <nav className="border-t border-base-200">
         <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-2">
           {categories.map((c) => {
