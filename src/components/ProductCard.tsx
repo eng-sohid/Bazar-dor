@@ -1,13 +1,14 @@
-import Link from "next/link";
 import type { Product } from "../types";
 import { formatPrice, formatUnit, getChangeBadge } from "../lib/utils";
+import LoadingLink from "./LoadingLink";
 
 export default function ProductCard({ product }: { product: Product }) {
   const badge = getChangeBadge(product.change);
 
   return (
-    <Link
+    <LoadingLink
       href={`/product/${product.slug}`}
+      label={`${product.nameBn} লোড হচ্ছে...`}
       className="card border border-base-300 bg-base-100 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
     >
       <div className="card-body gap-2 p-4">
@@ -32,6 +33,6 @@ export default function ProductCard({ product }: { product: Product }) {
           </span>
         </div>
       </div>
-    </Link>
+    </LoadingLink>
   );
 }

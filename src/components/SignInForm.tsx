@@ -13,13 +13,16 @@ export default function SignInForm() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const reason = params.get("reason");
+  const redirectTo = params.get("redirect") || "/";
+
   useEffect(() => {
-    if (params.get("reason") === "login") {
+    if (reason === "login") {
       toast.error("এই পেজ দেখতে আগে সাইন ইন করুন", {
         id: "login-required",
       });
     }
-  }, [params]);
+  }, [reason]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -36,12 +39,10 @@ export default function SignInForm() {
     setLoading(true);
 
     try {
-      const { error } = await authClient.signIn.email({
-        email,
-        password,
-      });
+      const { error } = await authClient.signIn.email({ email, password });
 
       if (error) {
+        setLoading(false);
         toast.error(error.message || "ইমেইল বা পাসওয়ার্ড ভুল");
         return;
       }
@@ -52,12 +53,12 @@ export default function SignInForm() {
       });
 
       setTimeout(() => {
-        router.push(params.get("redirect") || "/");
+        router.push(redirectTo);
+        router.refresh();
       }, 1000);
     } catch {
-      toast.error("সমস্যা হয়েছে। আবার চেষ্টা করুন।");
-    } finally {
       setLoading(false);
+      toast.error("সমস্যা হয়েছে। আবার চেষ্টা করুন।");
     }
   }
 

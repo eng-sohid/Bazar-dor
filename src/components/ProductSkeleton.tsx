@@ -1,17 +1,31 @@
-export default function ProductSkeleton({ count = 6 }: { count?: number }) {
+export default function Loading() {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {Array.from({ length: count }).map((_, i) => (
-        <div
-          key={i}
-          className="card border border-base-300 bg-base-100 p-4 shadow-sm"
-        >
-          <div className="skeleton h-10 w-10 rounded-full"></div>
-          <div className="skeleton mt-3 h-5 w-3/4"></div>
-          <div className="skeleton mt-2 h-4 w-1/3"></div>
-          <div className="skeleton mt-4 h-6 w-1/2"></div>
+    <div className="mx-auto max-w-5xl px-4 py-6">
+      <div className="skeleton h-4 w-48 font-bold text-2xl">Laoding...</div>
+      <div className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-green-100 bg-white p-5">
+        <div className="flex items-center gap-4">
+          <div className="skeleton h-16 w-16 rounded-2xl"></div>
+          <div className="space-y-2">
+            <div className="skeleton h-6 w-40"></div>
+            <div className="skeleton h-3 w-28"></div>
+            <div className="skeleton h-3 w-52"></div>
+          </div>
         </div>
-      ))}
+        <div className="skeleton h-24 w-32 rounded-xl"></div>
+      </div>
+      <div className="mt-4 rounded-2xl border border-green-100 bg-white p-5">
+        <div className="skeleton h-5 w-36"></div>
+        <div className="mt-3 grid gap-3 sm:grid-cols-3">
+          {Array.from({ length: 3 }).map((_, i) => (
+            <div key={i} className="skeleton h-24 w-full rounded-xl"></div>
+          ))}
+        </div>
+        <div className="mt-6 space-y-2">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="skeleton h-9 w-full"></div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
